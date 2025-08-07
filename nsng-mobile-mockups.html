@@ -1,0 +1,1364 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NSNG - No Shame No Gain Mobile App Mockups</title>
+    <style rel="stylesheet">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #D4A574 0%, #E8D5C4 100%);
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #8B5A3C;
+            margin-bottom: 40px;
+            font-size: 36px;
+        }
+
+        .screens-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            justify-items: center;
+        }
+
+        .phone-mockup {
+            width: 320px;
+            height: 680px;
+            background: #1a1a1a;
+            border-radius: 40px;
+            padding: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .screen {
+            width: 100%;
+            height: 100%;
+            background: #FEFEFE;
+            border-radius: 28px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .status-bar {
+            height: 44px;
+            background: #FEFEFE;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .battery-icon {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .screen-content {
+            height: calc(100% - 44px);
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .screen-label {
+            text-align: center;
+            margin-top: 20px;
+            color: #8B5A3C;
+            font-weight: 600;
+        }
+
+        /* Color Palette */
+        :root {
+            --primary: #D2691E;
+            --primary-dark: #A0522D;
+            --secondary: #DEB887;
+            --accent: #CD853F;
+            --background: #FFF8F0;
+            --surface: #FEFEFE;
+            --text-primary: #3E2723;
+            --text-secondary: #6D4C41;
+            --error: #D32F2F;
+            --success: #689F38;
+        }
+
+        /* Common Components */
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            border: none;
+            padding: 16px 32px;
+            border-radius: 28px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(210, 105, 30, 0.3);
+        }
+
+        .btn-secondary {
+            background: var(--background);
+            color: var(--primary-dark);
+            border: 2px solid var(--secondary);
+            padding: 14px 30px;
+            border-radius: 28px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 14px 20px;
+            border: 2px solid var(--secondary);
+            border-radius: 12px;
+            font-size: 16px;
+            background: var(--background);
+            margin-bottom: 16px;
+            color: var(--text-primary);
+        }
+
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            margin-bottom: 16px;
+        }
+
+        /* Video Placeholder Component */
+        .video-placeholder {
+            background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.6);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .video-placeholder::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 10px,
+                    rgba(255, 255, 255, 0.03) 10px,
+                    rgba(255, 255, 255, 0.03) 20px
+            );
+        }
+
+        .play-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 8px;
+        }
+
+        .play-icon::after {
+            content: '▶';
+            color: white;
+            font-size: 20px;
+            margin-left: 4px;
+        }
+
+        /* Screen Specific Styles */
+        .splash-screen {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            color: white;
+        }
+
+        .logo {
+            width: 120px;
+            height: 120px;
+            background: white;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            margin-bottom: 24px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+        }
+
+        .login-screen {
+            padding: 40px 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+            background: var(--background);
+        }
+
+        .google-btn {
+            background: white;
+            border: 1px solid #dadce0;
+            padding: 12px 24px;
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            font-size: 16px;
+            color: #3c4043;
+            cursor: pointer;
+        }
+
+        .home-screen {
+            background: var(--background);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .home-content {
+            flex: 1;
+            overflow-y: auto;
+            padding-bottom: 72px;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            padding: 24px;
+            color: white;
+            border-radius: 0 0 24px 24px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 12px;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+
+        .quick-start {
+            padding: 24px;
+        }
+
+        .preset-card {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px;
+            cursor: pointer;
+        }
+
+        .preset-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--secondary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .bottom-nav {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 72px;
+            background: white;
+            border-top: 1px solid #e0e0e0;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            color: var(--text-secondary);
+            font-size: 12px;
+        }
+
+        .nav-item.active {
+            color: var(--primary);
+        }
+
+        .workout-screen {
+            background: #000;
+            color: white;
+            height: 100%;
+            position: relative;
+        }
+
+        .camera-view {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, #1a1a1a 25%, #2a2a2a 25%, #2a2a2a 50%, #1a1a1a 50%, #1a1a1a 75%, #2a2a2a 75%, #2a2a2a);
+            background-size: 20px 20px;
+            opacity: 0.3;
+        }
+
+        .workout-overlay {
+            position: relative;
+            z-index: 1;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 60px 20px 20px;
+        }
+
+        .workout-stats {
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 20px;
+        }
+
+        .ai-feedback {
+            background: rgba(210, 105, 30, 0.9);
+            padding: 12px 20px;
+            border-radius: 20px;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .stop-btn {
+            width: 80px;
+            height: 80px;
+            background: var(--error);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            box-shadow: 0 4px 20px rgba(211, 47, 47, 0.4);
+        }
+
+        .contacts-screen {
+            background: var(--background);
+            padding: 24px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px;
+        }
+
+        .contact-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .contact-avatar {
+            width: 40px;
+            height: 40px;
+            background: var(--secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .loser-board {
+            background: var(--background);
+            padding: 24px;
+        }
+
+        .loser-card {
+            margin-bottom: 16px;
+        }
+
+        .loser-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .shame-photo {
+            width: 100%;
+            height: 180px;
+            background: linear-gradient(45deg, #ffcccc, #ffdddd);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        .premium-screen {
+            background: var(--background);
+            padding: 24px;
+        }
+
+        .premium-banner {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            padding: 32px 24px;
+            border-radius: 20px;
+            text-align: center;
+            color: white;
+            margin-bottom: 24px;
+        }
+
+        .shield-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+
+        .feature-list {
+            margin: 24px 0;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 0;
+        }
+
+        .check-icon {
+            color: var(--success);
+            font-size: 20px;
+        }
+
+        .notification-badge {
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            background: var(--error);
+            color: white;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+
+        .workout-config-screen {
+            background: var(--background);
+            padding: 24px;
+        }
+
+        .config-section {
+            margin-bottom: 24px;
+        }
+
+        .config-label {
+            color: var(--text-primary);
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .option-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .option-btn {
+            padding: 12px;
+            background: white;
+            border: 2px solid var(--secondary);
+            border-radius: 12px;
+            text-align: center;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .option-btn.selected {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .slider-container {
+            background: white;
+            padding: 16px;
+            border-radius: 12px;
+        }
+
+        .slider-track {
+            height: 8px;
+            background: var(--secondary);
+            border-radius: 4px;
+            position: relative;
+        }
+
+        .slider-fill {
+            height: 100%;
+            background: var(--primary);
+            border-radius: 4px;
+            width: 60%;
+        }
+
+        .notification-screen {
+            background: var(--background);
+            padding: 24px;
+        }
+
+        .notification-item {
+            background: white;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 12px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .notification-item.error {
+            border-left-color: var(--error);
+        }
+
+        .notification-item.success {
+            border-left-color: var(--success);
+        }
+
+        .notification-time {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-top: 8px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>NSNG - No Shame No Gain Mobile App Mockups</h1>
+
+    <div class="screens-grid">
+        <!-- Screen 1: Splash Screen -->
+        <div>
+            <div class="phone-mockup">
+                <div class="screen">
+                    <div class="splash-screen">
+                        <div class="logo">💪</div>
+                        <h2 style="font-size: 28px; margin-bottom: 8px;">NO SHAME</h2>
+                        <h3 style="font-size: 24px; font-weight: 300;">NO GAIN</h3>
+                        <p style="margin-top: 24px; opacity: 0.9;">Motivation Through Accountability</p>
+                    </div>
+                </div>
+            </div>
+            <p class="screen-label">Splash Screen</p>
+        </div>
+
+        <!-- Screen 2: Login Screen -->
+        <div>
+            <div class="phone-mockup">
+                <div class="screen">
+                    <div class="status-bar">
+                        <span>9:41</span>
+                        <div class="battery-icon">
+                            <span>100%</span>
+                        </div>
+                    </div>
+                    <div class="login-screen">
+                        <div style="text-align: center; margin-bottom: 48px;">
+                            <div style="font-size: 48px; margin-bottom: 16px;">💪</div>
+                            <h2 style="color: var(--primary-dark); font-size: 28px; margin-bottom: 8px;">Welcome Back</h2>
+                            <p style="color: var(--text-secondary);">Ready to push your limits?</p>
+                        </div>
+
+                        <div class="google-btn">
+                            <span style="font-size: 20px;">G</span>
+                            <span>Continue with Google</span>
+                        </div>
+
+                        <p style="text-align: center; margin-top: 32px; color: var(--text-secondary); font-size: 14px;">
+                            By continuing, you agree to our<br/>
+                            Terms of Service and Privacy Policy
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <p class="screen-label">Login Screen</p>
+        </div>
+
+        <!-- Screen 3: Home Screen (Fixed) -->
+        <div>
+            <div class="phone-mockup">
+                <div class="screen">
+                    <div class="status-bar">
+                        <span>9:41</span>
+                        <div class="battery-icon">
+                            <span>100%</span>
+                        </div>
+                    </div>
+                    <div class="screen-content home-screen">
+                        <div class="home-content">
+                            <div class="header">
+                                <h2 style="font-size: 24px;">Hey, Sarah! 👋</h2>
+                                <p style="opacity: 0.9; margin-top: 4px;">Time to crush your workout</p>
+
+                                <div class="stats-grid">
+                                    <div class="stat-card">
+                                        <div style="font-size: 24px; font-weight: bold;">12</div>
+                                        <div style="font-size: 12px;">Streak Days</div>
+                                    </div>
+                                    <div class="stat-card">
+                                        <div style="font-size: 24px; font-weight: bold;">85%</div>
+                                        <div style="font-size: 12px;">Success Rate</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="quick-start">
+                                <h3 style="color: var(--text-primary); margin-bottom: 16px;">Quick Start</h3>
+
+                                <div class="card preset-card">
+                                    <div class="preset-icon">🏃</div>
+                                    <div style="flex: 1;">
+                                        <div style="font-weight: 600; color: var(--text-primary);">Morning Run</div>
+                                        <div style="font-size: 14px; color: var(--text-secondary);">30 min • High Intensity</div>
+                                    </div>
+                                    <div style="color: var(--primary);">▶</div>
+                                </div>
+
+                                <div class="card preset-card">
+                                    <div class="preset-icon">💪</div>
+                                    <div style="flex: 1;">
+                                        <div style="font-weight: 600; color: var(--text-primary);">Strength Training</div>
+                                        <div style="font-size: 14px; color: var(--text-secondary);">45 min • Medium Intensity</div>
+                                    </div>
+                                    <div style="color: var(--primary);">▶</div>
+                                </div>
+
+                                <div class="card preset-card">
+                                    <div class="preset-icon">🧘</div>
+                                    <div style="flex: 1;">
+                                        <div style="font-weight: 600; color: var(--text-primary);">Yoga Flow</div>
+                                        <div style="font-size: 14px; color: var(--text-secondary);">20 min • Low Intensity</div>
+                                    </div>
+                                    <div style="color: var(--primary);">▶</div>
+                                </div>
+
+                                <button class="btn-primary" style="width: 100%; margin-top: 24px;">
+                                    + Create New Workout
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="bottom-nav">
+                            <div class="nav-item active">
+                                <div style="font-size: 20px;">🏠</div>
+                                <span>Home</span>
+                            </div>
+                            <div class="nav-item">
+                                <div style="font-size: 20px;">📊</div>
+                                <span>Stats</span>
+                            </div>
+                            <div class="nav-item" style="position: relative;">
+                                <div style="font-size: 20px;">😱</div>
+                                <span>Losers</span>
+                                <div class="notification-badge">3</div>
+                            </div>
+                            <div class="nav-item">
+                                <div style="font-size: 20px;">👥</div>
+                                <span>Contacts</span>
+                            </div>
+                            <div class="nav-item">
+                                <div style="font-size: 20px;">⭐</div>
+                                <span>Premium</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="screen-label">Home Screen</p>
+        </div>
+
+        <!-- Screen 4: Create New Workout -->
+        <div>
+            <div class="phone-mockup">
+                <div class="screen">
+                    <div class="status-bar">
+                        <span>9:41</span>
+                        <div class="battery-icon">
+                            <span>100%</span>
+                        </div>
+                    </div>
+                    <div class="screen-content workout-config-screen">
+                        <h2 style="color: var(--text-primary); margin-bottom: 24px;">Create Workout</h2>
+
+                        <div class="config-section">
+                            <div class="config-label">Workout Type</div>
+                            <div class="option-grid">
+                                <div class="option-btn selected">Cardio</div>
+                                <div class="option-btn">Strength</div>
+                                <div class="option-btn">Mobility</div>
+                            </div>
+                        </div>
+
+                        <div class="config-section">
+                            <div class="config-label">Effort Level</div>
+                            <div class="slider-container">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                    <span style="font-size: 14px; color: var(--text-secondary);">Low</span>
+                                    <span style="font-weight: 600; color: var(--primary);">Medium</span>
+                                    <span style="font-size: 14px; color: var(--text-secondary);">High</span>
+                                </div>
+                                <div class="slider-track">
+                                    <div class="slider-fill"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="config-section">
+                            <div class="config-label">Duration</div>
+                            <div class="option-grid">
+                                <div class="option-btn">15 min</div>
+                                <div class="option-btn selected">30 min</div>
+                                <div class="option-btn">45 min</div>
+                            </div>
+                        </div>
+
+                        <div class="config-section">
+                            <div class="config-label">Fail Threshold</div>
+                            <div class="slider-container">
+                                <div style="text-align: center; margin-bottom: 8px;">
+                                    <span style="font-size: 24px; font-weight: 600; color: var(--primary);">AI Auto-Detect</span>
+                                </div>
+                                <p style="font-size: 14px; color: var(--text-secondary); text-align: center;">
+                                    Our AI will monitor your form, intensity, and consistency
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="config-section">
+                            <div class="config-label">Heart Rate Monitor</div>
+                            <div class="card" style="display: flex; align-items: center; justify-content: space-between;">
+                                <span>Connect Device</span>
+                                <div style="width: 48px; height: 28px; background: var(--secondary); border-radius: 14px; position: relative;">
+                                    <div style="width: 24px; height: 24px; background: white; border-radius: 50%; position: absolute; top: 2px; right: 2px;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="btn-primary" style="width: 100%; margin-top: 24px;">Save Workout</button>
+                    </div>
+                </div>
+            </div>
+            <p class="screen-label">Create New Workout</p>
+        </div>
+
+        <!-- Screen 5: Pre-Workout Screen -->
+        <div>
+            <div class="phone-mockup">
+                <div class="screen">
+                    <div class="status-bar">
+                        <span>9:41</span>
+                        <div class="battery-icon">
+                            <span>100%</span>
+                        </div>
+                    </div>
+                    <div class="screen-content" style="background: var(--background); padding: 24px;">
+                        <h2 style="color: var(--text-primary); margin-bottom: 24px;">Ready to Start?</h2>
+
+                        <div class="card" style="background: linear-gradient(135deg, rgba(210, 105, 30, 0.1), rgba(205, 133, 63, 0.1));">
+                            <div style="text-align: center; padding: 20px;">
+                                <div style="font-size: 48px; margin-bottom: 16px;">🏃</div>
+                                <h3 style="color: var(--text-primary); margin-bottom: 8px;">Morning Run</h3>
+                                <p style="color: var(--text-secondary);">30 minutes • High Intensity</p>
+                            </div>
+                        </div>
+
+                        <div class="video-placeholder" style="height: 200px; margin-bottom: 20px;">
+                            <div class="play-icon"></div>
+                            <span style="font-size: 14px; z-index: 1;">Camera Preview</span>
+                        </div>
+
+                        <div style="background: #FFF3E0; padding: 16px; border-radius: 12px; margin-bottom: 20px;">
+                            <h4 style="color: var(--text-primary); margin-bottom: 8px;">AI Monitoring Active</h4>
+                            <p style="font-size: 14px; color: var(--text-secondary);">
+                                Position yourself so your full body is visible. AI will track your form and effort level.
+                            </p>
+                        </div>
+
+                        <div style="margin-bottom: 20px;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                <span style="color: var(--text-secondary);">Heart Rate Monitor</span>
+                                <span style="color: var(--success);">Connected ✓</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between;">
+                                <span style="color: var(--text-secondary);">Shame Contacts</span>
+                                <span style="color: var(--primary);">4 contacts set</span>
+                            </div>
+                        </div>
+
+                        <button class="btn-primary" style="width: 100%; margin-bottom: 12px;">Start Workout</button>
+                        <button class="btn-secondary" style="width: 100%;">Cancel</button>
+                    </div>
+                </div>
+            </div>
+            <p class="screen-label">Pre-Workout Screen</p>
+        </div>
+
+        <!-- Screen 6: Active Workout Screen (Fixed) -->
+        <div>
+            <div class="phone-mockup">
+                <div class="screen">
+                    <div class="status-bar" style="background: transparent; position: absolute; z-index: 2; display: flex; width: 100%">
+                        <span style="color: white;">9:41</span>
+                        <div class="battery-icon">
+                            <span style="color: white;">100%</span>
+                        </div>
+                    </div>
+                    <div class="workout-screen">
+                        <div class="camera-view"></div>
+                        <div class="workout-overlay">
+                            <div class="video-placeholder" style="height: 180px; background: rgba(0,0,0,0.5); margin-bottom: 20px;">
+                                <span style="font-size: 14px;">Live Video Feed</span>
+                                <span style="font-size: 12px; opacity: 0.7;">AI analyzing your form...</span>
+                            </div>
+
+                            <div class="workout-stats">
+                                <div style="text-align: center; margin-bottom: 20px;">
+                                    <div style="font-size: 48px; font-weight: bold;">12:34</div>
+                                    <div style="opacity: 0.8;">Elapsed Time</div>
+                                </div>
+
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                                    <div style="text-align: center;">
+                                        <div style="font-size: 32px; color: #4CAF50;">156</div>
+                                        <div style="font-size: 12px; opacity: 0.8;">Heart Rate</div>
+                                    </div>
+                                    <div style="text-align: center;">
+                                        <div style="font-size: 32px; color: #FF9800;">72%</div>
+                                        <div style="font-size: 12px; opacity: 0.8;">Effort Level</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="ai-feedback">
+                                🔥 Great form! Keep pushing!
+                            </div>
+
+                            <div style="text-align: center; padding: 20px;">
+                                <div style="font-size: 14px; opacity: 0.8; margin-bottom: 8px;">AI Confidence</div>
+                                <div style="background: rgba(255,255,255,0.2); height: 8px; border-radius: 4px;">
+                                    <div style="background: #4CAF50; width: 85%; height: 100%; border-radius: 4px;"></div>
+                                </div>
+                            </div>
+
+                            <div class="stop-btn">
+                                <div style="width: 24px; height: 24px; background: white;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="screen-label">Active Workout (Live Stream)</p>
+        </div>
+
+        <!-- Screen 7: Workout Success Screen -->
+        <div>
+            <div class="phone-mockup">
+                <div class="screen">
+                    <div class="status-bar">
+                        <span>9:41</span>
+                        <div class="battery-icon">
+                            <span>100%</span>
+                        </div>
+                    </div>
+                    <div class="screen-content" style="background: var(--background); padding: 24px;">
+                        <div style="text-align: center; padding: 40px 0;">
+                            <div style="font-size: 64px; margin-bottom: 16px;">🎉</div>
+                            <h2 style="color: var(--success); font-size: 28px; margin-bottom: 8px;">Workout Complete!</h2>
+                            <p style="color: var(--text-secondary); margin-bottom: 32px;">
+                                You crushed it! No shame today.
+                            </p>
+                        </div>
+
+                        <div class="card" style="background: #E8F5E9;">
+                            <h3 style="color: var(--text-primary); margin-bottom: 16px;">Workout Summary</h3>
+
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+                                <div>
+                                    <div style="font-size: 24px; font-weight: bold; color: var(--success);">30:00</div>
+                                    <div style="font-size: 14px; color: var(--text-secondary);">Duration</div>
+                                </div>
+                                <div>
+                                    <div style="font-size: 24px; font-weight: bold; color: var(--success);">320</div>
+                                    <div style="font-size: 14px; color: var(--text-secondary);">Calories</div>
+                                </div>
+                            </div>
+
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                                <div>
+                                    <div style="font-size: 24px; font-weight: bold; color: var(--success);">152</div>
+                                    <div style="font-size: 14px; color: var(--text-secondary);">Avg Heart Rate</div>
+                                </div>
+                                <div>
+                                    <div style="font-size: 24px; font-weight: bold; color: var(--success);">95%</div>
+                                    <div style="font-size: 14px; color: var(--text-secondary);">AI Score</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card" style="background: linear-gradient(135deg, rgba(104, 159, 56, 0.1), rgba(139, 195, 74, 0.1));">
+                            <div style="text-align: center;">
+                                <div style="font-size: 20px; margin-bottom: 8px;">🔥 13 Day Streak!</div>
+                                <p style="font-size: 14px; color: var(--text-secondary);">Keep it up champion!</p>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 24px;">
+                            <button class="btn-primary" style="width: 100%; margin-bottom: 12px;">Share Achievement</button>
+                            <button class="btn-secondary" style="width: 100%;">Back to Home</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="screen-label">Workout Success</p>
+        </div>
+
+        <!-- Screen 8: Workout Failed Screen (Fixed) -->
+        <div>
+            <div class="phone-mockup">
+                <div class="screen">
+                    <div class="status-bar">
+                        <span>9:41</span>
+                        <div class="battery-icon">
+                            <span>100%</span>
+                        </div>
+                    </div>
+                    <div class="screen-content" style="background: var(--background); padding: 24px;">
+                        <div style="text-align: center; padding: 40px 0;">
+                            <div style="font-size: 64px; margin-bottom: 16px;">😱</div>
+                            <h2 style="color: var(--error); font-size: 28px; margin-bottom: 8px;">Workout Failed!</h2>
+                            <p style="color: var(--text-secondary); margin-bottom: 32px;">
+                                AI detected insufficient effort.<br/>
+                                Shame notifications incoming...
+                            </p>
+                        </div>
+
+                        <div class="card" style="background: #FFF3E0; border: 2px solid var(--error);">
+                            <h3 style="color: var(--text-primary); margin-bottom: 16px;">Notifications Sent To:</h3>
+
+                            <div style="margin-bottom: 16px;">
+                                <div style="display: flex; align-items: center; gap: 12px;">
+                                    <div style="font-size: 24px;">📱</div>
+                                    <div>
+                                        <div style="font-weight: 600;">Mom</div>
+                                        <div style="font-size: 14px; color: var(--text-secondary);">Photo sent • "Sarah gave up after 5 minutes!"</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div style="margin-bottom: 16px;">
+                                <div style="display: flex; align-items: center; gap: 12px;">
+                                    <div style="font-size: 24px;">📱</div>
+                                    <div>
+                                        <div style="font-weight: 600;">Best Friend Jake</div>
+                                        <div style="font-size: 14px; color: var(--text-secondary);">Photo sent • "Caught slacking!"</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div style="display: flex; align-items: center; gap: 12px;">
+                                    <div style="font-size: 24px;">📱</div>
+                                    <div>
+                                        <div style="font-weight: 600;">Work Group Chat</div>
+                                        <div style="font-size: 14px; color: var(--text-secondary);">Photo sent • "Monday motivation fail!"</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 24px;">
+                            <button class="btn-primary" style="width: 100%; margin-bottom: 12px;">
+                                Try Again Tomorrow
+                            </button>
+                            <button class="btn-secondary" style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                                <span>🛡️ Use Shame Shield</span>
+                                <span style="background: var(--primary); color: white; padding: 2px 8px; border-radius: 12px; font-size: 12px;">2</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="screen-label">Workout Failed / Shame Sent</p>
+        </div>
+
+        <!-- Screen 9: Add New Contact -->
+        <div>
+            <div class="phone-mockup">
+                <div class="screen">
+                    <div class="status-bar">
+                        <span>9:41</span>
+                        <div class="battery-icon">
+                            <span>100%</span>
+                        </div>
+                    </div>
+                    <div class="screen-content" style="background: var(--background); padding: 24px;">
+                        <h2 style="color: var(--text-primary); margin-bottom: 24px;">Add Shame Contact</h2>
+
+                        <div style="margin-bottom: 24px;">
+                            <label style="display: block; color: var(--text-primary); font-weight: 600; margin-bottom: 8px;">Contact Name</label>
+                            <input type="text" class="input-field" placeholder="Enter name" value="Boss Mike">
+                        </div>
+
+                        <div style="margin-bottom: 24px;">
+                            <label style="display: block; color: var(--text-primary); font-weight: 600; margin-bottom: 8px;">Phone Number</label>
+                            <input type="text" class="input-field" placeholder="+1 234-567-8900" value="+1 555-0123">
+                        </div>
+
+                        <div style="margin-bottom: 24px;">
+                            <label style="display: block; color: var(--text-primary); font-weight: 600; margin-bottom: 8px;">Relationship</label>
+                            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;">
+                                <div class="option-btn">Family</div>
+                                <div class="option-btn">Friend</div>
+                                <div class="option-btn selected">Work</div>
+                                <div class="option-btn">Other</div>
+                            </div>
+                        </div>
+
+                        <div style="margin-bottom: 24px;">
+                            <label style="display: block; color: var(--text-primary); font-weight: 600; margin-bottom: 8px;">Shame Level</label>
+                            <div class="slider-container">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                    <span style="font-size: 14px; color: var(--text-secondary);">Mild</span>
+                                    <span style="font-weight: 600; color: var(--primary);">Medium</span>
+                                    <span style="font-size: 14px; color: var(--text-secondary);">Nuclear</span>
+                                </div>
+                                <div class="slider-track">
+                                    <div class="slider-fill" style="width: 70%;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="background: #FFF3E0; padding: 16px; border-radius: 12px; margin-bottom: 24px;">
+                            <p style="font-size: 14px; color: var(--text-secondary);">
+                                ⚠️ This contact will receive embarrassing photos and messages when you fail a workout. Make sure they're okay with this!
+                            </p>
+                        </div>
+
+                        <button class="btn-primary" style="width: 100%; margin-bottom: 12px;">Add Contact</button>
+                        <button class="btn-secondary" style="width: 100%;">Cancel</button>
+                    </div>
+                </div>
+            </div>
+            <p class="screen-label">Add New Contact</p>
+        </div>
+
+        <!-- Screen 10: Contacts Management -->
+        <div>
+            <div class="phone-mockup">
+                <div class="screen">
+                    <div class="status-bar">
+                        <span>9:41</span>
+                        <div class="battery-icon">
+                            <span>100%</span>
+                        </div>
+                    </div>
+                    <div class="screen-content contacts-screen">
+                        <h2 style="color: var(--text-primary); margin-bottom: 24px;">Shame Contacts</h2>
+
+                        <div class="card contact-item">
+                            <div class="contact-info">
+                                <div class="contact-avatar">👩</div>
+                                <div>
+                                    <div style="font-weight: 600;">Mom</div>
+                                    <div style="font-size: 14px; color: var(--text-secondary);">+1 234-567-8901</div>
+                                </div>
+                            </div>
+                            <div style="color: var(--error);">🗑️</div>
+                        </div>
+
+                        <div class="card contact-item">
+                            <div class="contact-info">
+                                <div class="contact-avatar">👨</div>
+                                <div>
+                                    <div style="font-weight: 600;">Best Friend Jake</div>
+                                    <div style="font-size: 14px; color: var(--text-secondary);">+1 234-567-8902</div>
+                                </div>
+                            </div>
+                            <div style="color: var(--error);">🗑️</div>
+                        </div>
+
+                        <div class="card contact-item">
+                            <div class="contact-info">
+                                <div class="contact-avatar">👥</div>
+                                <div>
+                                    <div style="font-weight: 600;">Work Group Chat</div>
+                                    <div style="font-size: 14px; color: var(--text-secondary);">5 members</div>
+                                </div>
+                            </div>
+                            <div style="color: var(--error);">🗑️</div>
+                        </div>
+
+                        <div class="card contact-item">
+                            <div class="contact-info">
+                                <div class="contact-avatar">👴</div>
+                                <div>
+                                    <div style="font-weight: 600;">Dad</div>
+                                    <div style="font-size: 14px; color: var(--text-secondary);">+1 234-567-8903</div>
+                                </div>
+                            </div>
+                            <div style="color: var(--error);">🗑️</div>
+                        </div>
+
+                        <button class="btn-primary" style="width: 100%; margin-top: 24px;">
+                            + Add New Contact
+                        </button>
+
+                        <div style="background: #FFF3E0; padding: 16px; border-radius: 12px; margin-top: 16px;">
+                            <p style="font-size: 14px; color: var(--text-secondary); text-align: center;">
+                                ⚠️ These contacts will receive your shame photos when you fail a workout
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="screen-label">Contacts Management</p>
+        </div>
+
+        <!-- Screen 11: The Loser Board (Fixed) -->
+        <div>
+            <div class="phone-mockup">
+                <div class="screen">
+                    <div class="status-bar">
+                        <span>9:41</span>
+                        <div class="battery-icon">
+                            <span>100%</span>
+                        </div>
+                    </div>
+                    <div class="screen-content loser-board">
+                        <h2 style="color: var(--text-primary); margin-bottom: 8px;">The Loser Board 😱</h2>
+                        <p style="color: var(--text-secondary); font-size: 14px; margin-bottom: 24px;">Last 7 days of shame</p>
+
+                        <div class="card loser-card">
+                            <div class="loser-header">
+                                <div class="contact-avatar">JD</div>
+                                <div style="flex: 1;">
+                                    <div style="font-weight: 600;">John Doe</div>
+                                    <div style="font-size: 12px; color: var(--text-secondary);">2 hours ago</div>
+                                    <div style="font-size: 14px; color: var(--error);">Quit after 3 minutes</div>
+                                </div>
+                            </div>
+                            <div class="video-placeholder" style="height: 180px;">
+                                <span style="font-size: 14px;">Embarrassing Fail Video</span>
+                            </div>
+                            <div style="display: flex; gap: 16px; margin-top: 12px; font-size: 14px;">
+                                <span>😂 42</span>
+                                <span>💬 18</span>
+                                <span>Sent to 5 contacts</span>
+                            </div>
+                        </div>
+
+                        <div class="card loser-card">
+                            <div class="loser-header">
+                                <div class="contact-avatar" style="background: #FFB6C1;">EM</div>
+                                <div style="flex: 1;">
+                                    <div style="font-weight: 600;">Emma Miller</div>
+                                    <div style="font-size: 12px; color: var(--text-secondary);">Yesterday</div>
+                                    <div style="font-size: 14px; color: var(--error);">Gave up on squats</div>
+                                </div>
+                            </div>
+                            <div class="video-placeholder" style="height: 180px;">
+                                <span style="font-size: 14px;">Embarrassing Fail Video</span>
+                            </div>
+                            <div style="display: flex; gap: 16px; margin-top: 12px; font-size: 14px;">
+                                <span>😂 28</span>
+                                <span>💬 7</span>
+                                <span>Sent to 3 contacts</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="screen-label">The Loser Board</p>
+        </div>
+
+        <!-- Screen 12: Notifications Screen -->
+        <div>
+            <div class="phone-mockup">
+                <div class="screen">
+                    <div class="status-bar">
+                        <span>9:41</span>
+                        <div class="battery-icon">
+                            <span>100%</span>
+                        </div>
+                    </div>
+                    <div class="screen-content notification-screen">
+                        <h2 style="color: var(--text-primary); margin-bottom: 24px;">Notifications</h2>
+
+                        <div class="notification-item">
+                            <div style="display: flex; gap: 12px; align-items: start;">
+                                <span style="font-size: 24px;">😱</span>
+                                <div style="flex: 1;">
+                                    <div style="font-weight: 600; color: var(--text-primary);">Your shame was sent!</div>
+                                    <div style="font-size: 14px; color: var(--text-secondary); margin-top: 4px;">
+                                        Failed workout photo sent to 4 contacts
+                                    </div>
+                                    <div class="notification-time">2 minutes ago</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="notification-item success">
+                            <div style="display: flex; gap: 12px; align-items: start;">
+                                <span style="font-size: 24px;">🎉</span>
+                                <div style="flex: 1;">
+                                    <div style="font-weight: 600; color: var(--text-primary);">Great job!</div>
+                                    <div style="font-size: 14px; color: var(--text-secondary); margin-top: 4px;">
+                                        You completed your morning run successfully
+                                    </div>
+                                    <div class="notification-time">1 hour ago</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="notification-item">
+                            <div style="display: flex; gap: 12px; align-items: start;">
+                                <span style="font-size: 24px;">💬</span>
+                                <div style="flex: 1;">
+                                    <div style="font-weight: 600; color: var(--text-primary);">Mom responded</div>
+                                    <div style="font-size: 14px; color: var(--text-secondary); margin-top: 4px;">
+                                        "I'm disappointed but I still love you 😅"
+                                    </div>
+                                    <div class="notification-time">3 hours ago</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="notification-item">
+                            <div style="display: flex; gap: 12px; align-items: start;">
+                                <span style="font-size: 24px;">🔥</span>
+                                <div style="flex: 1;">
+                                    <div style="font-weight: 600; color: var(--text-primary);">10 Day Streak!</div>
+                                    <div style="font-size: 14px; color: var(--text-secondary); margin-top: 4px;">
+                                        Keep up the amazing work!
+                                    </div>
+                                    <div class="notification-time">Yesterday</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="notification-item error">
+                            <div style="display: flex; gap: 12px; align-items: start;">
+                                <span style="font-size: 24px;">⚠️</span>
+                                <div style="flex: 1;">
+                                    <div style="font-weight: 600; color: var(--text-primary);">Connection Error</div>
+                                    <div style="font-size: 14px; color: var(--text-secondary); margin-top: 4px;">
+                                        Heart rate monitor disconnected during workout
+                                    </div>
+                                    <div class="notification-time">2 days ago</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="screen-label">Notifications & Errors</p>
+        </div>
+
+        <!-- Screen 13: Premium/Shame Shield -->
+        <div>
+            <div class="phone-mockup">
+                <div class="screen">
+                    <div class="status-bar">
+                        <span>9:41</span>
+                        <div class="battery-icon">
+                            <span>100%</span>
+                        </div>
+                    </div>
+                    <div class="screen-content premium-screen">
+                        <div class="premium-banner">
+                            <div class="shield-icon">🛡️</div>
+                            <h2 style="font-size: 24px; margin-bottom: 8px;">NSNG Premium</h2>
+                            <p style="opacity: 0.9;">Protect yourself from shame</p>
+                        </div>
+
+                        <div class="feature-list">
+                            <div class="feature-item">
+                                <span class="check-icon">✓</span>
+                                <span style="color: var(--text-primary);">5 Shame Shields per month</span>
+                            </div>
+                            <div class="feature-item">
+                                <span class="check-icon">✓</span>
+                                <span style="color: var(--text-primary);">Undo last shame (within 30 sec)</span>
+                            </div>
+                            <div class="feature-item">
+                                <span class="check-icon">✓</span>
+                                <span style="color: var(--text-primary);">Choose shame photo manually</span>
+                            </div>
+                            <div class="feature-item">
+                                <span class="check-icon">✓</span>
+                                <span style="color: var(--text-primary);">Blur face in shame photos</span>
+                            </div>
+                            <div class="feature-item">
+                                <span class="check-icon">✓</span>
+                                <span style="color: var(--text-primary);">Advanced AI coaching</span>
+                            </div>
+                            <div class="feature-item">
+                                <span class="check-icon">✓</span>
+                                <span style="color: var(--text-primary);">Priority support</span>
+                            </div>
+                        </div>
+
+                        <div style="background: white; padding: 20px; border-radius: 16px; text-align: center; margin: 24px 0;">
+                            <div style="font-size: 36px; font-weight: bold; color: var(--primary);">$9.99</div>
+                            <div style="color: var(--text-secondary);">per month</div>
+                        </div>
+
+                        <button class="btn-primary" style="width: 100%; background: linear-gradient(135deg, #FFD700, #FFA500);">
+                            Upgrade to Premium
+                        </button>
+
+                        <p style="text-align: center; margin-top: 16px; font-size: 14px; color: var(--text-secondary);">
+                            Cancel anytime • 7-day free trial
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <p class="screen-label">Premium / Shame Shield</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>
