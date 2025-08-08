@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="971da279-1380-4ce6-947b-656d1657cf13" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/lumiere/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,7 +67,7 @@
       <option name="presentableId" value="Default" />
       <updated>1754532595250</updated>
       <workItem from="1754532597525" duration="1455000" />
-      <workItem from="1754620225743" duration="1415000" />
+      <workItem from="1754620225743" duration="4377000" />
     </task>
     <servers />
   </component>
