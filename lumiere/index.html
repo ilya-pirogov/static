@@ -381,21 +381,40 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.1);
         }
 
-        .service-icon {
-            width: 80px;
-            height: 80px;
-            background: var(--gradient);
-            border-radius: 50%;
-            margin: 0 auto 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 32px;
+        .service-image {
+            width: 100%;
+            height: 200px;
+            border-radius: 20px;
+            margin: 0 auto 25px;
+            overflow: hidden;
+            position: relative;
             transition: transform 0.3s;
         }
 
-        .service-card:hover .service-icon {
-            transform: rotate(360deg);
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .service-card:hover .service-image img {
+            transform: scale(1.1);
+        }
+
+        .service-image .transformation-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: white;
+            padding: 6px 15px;
+            border-radius: 15px;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: bold;
+            color: var(--primary);
+            opacity: 0.9;
         }
 
         .service-card h3 {
@@ -462,72 +481,6 @@
         .service-btn span {
             position: relative;
             z-index: 2;
-        }
-
-        /* Gallery Section with Hover Zoom */
-        .gallery {
-            padding: 100px 0;
-            background: var(--gradient);
-        }
-
-        .gallery-grid {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 40px;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 30px;
-        }
-
-        .gallery-item {
-            position: relative;
-            border-radius: 20px;
-            overflow: hidden;
-            height: 300px;
-            background: white;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: all 0.3s;
-            animation: fadeInUp 0.8s ease both;
-        }
-
-        .gallery-item:nth-child(1) { animation-delay: 0.1s; }
-        .gallery-item:nth-child(2) { animation-delay: 0.2s; }
-        .gallery-item:nth-child(3) { animation-delay: 0.3s; }
-        .gallery-item:nth-child(4) { animation-delay: 0.4s; }
-        .gallery-item:nth-child(5) { animation-delay: 0.5s; }
-        .gallery-item:nth-child(6) { animation-delay: 0.6s; }
-        .gallery-item:nth-child(7) { animation-delay: 0.7s; }
-        .gallery-item:nth-child(8) { animation-delay: 0.8s; }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-
-        .gallery-item:hover {
-            transform: scale(1.05);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.1);
-        }
-
-        .before-after {
-            position: absolute;
-            bottom: 20px;
-            left: 20px;
-            background: white;
-            padding: 8px 20px;
-            border-radius: 20px;
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: bold;
-            color: var(--primary);
-            opacity: 0.9;
         }
 
         /* Testimonials with Slide Animation */
@@ -1141,8 +1094,7 @@
         <div class="logo">LUMIÈRE</div>
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#services">Services & Results</a></li>
             <li><a href="#testimonials">Reviews</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
@@ -1173,19 +1125,17 @@
     </div>
 </section>
 
-<!-- Services Section -->
+<!-- Services Section with Transformations -->
 <section class="services" id="services">
     <div class="section-header">
-        <h2>Our Premium Services</h2>
-        <p>Discover our range of professional treatments designed to enhance your natural beauty</p>
+        <h2>Services & Transformations</h2>
+        <p>Discover our professional treatments and witness the stunning results we achieve</p>
     </div>
     <div class="services-grid">
         <div class="service-card">
-            <div class="service-icon">
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/>
-                    <circle cx="12" cy="12" r="3"/>
-                </svg>
+            <div class="service-image">
+                <img src="https://images.unsplash.com/photo-1583001931096-959e9a1a6223?w=400&h=300&fit=crop" alt="Classic Lashes Transformation">
+                <div class="transformation-badge">Before & After</div>
             </div>
             <h3>Classic Lashes</h3>
             <div class="price">$120</div>
@@ -1194,12 +1144,9 @@
             <a href="#booking" class="service-btn"><span>Book Now</span></a>
         </div>
         <div class="service-card">
-            <div class="service-icon">
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/>
-                    <circle cx="12" cy="12" r="3"/>
-                    <path d="M12 2v4M12 18v4"/>
-                </svg>
+            <div class="service-image">
+                <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=400&h=300&fit=crop" alt="Volume Lashes Transformation">
+                <div class="transformation-badge">Before & After</div>
             </div>
             <h3>Volume Lashes</h3>
             <div class="price">$180</div>
@@ -1208,10 +1155,9 @@
             <a href="#booking" class="service-btn"><span>Book Now</span></a>
         </div>
         <div class="service-card">
-            <div class="service-icon">
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M12 2L2 12l10 10 10-10L12 2z"/>
-                </svg>
+            <div class="service-image">
+                <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?w=400&h=300&fit=crop" alt="Hybrid Lashes Transformation">
+                <div class="transformation-badge">Before & After</div>
             </div>
             <h3>Hybrid Lashes</h3>
             <div class="price">$150</div>
@@ -1220,10 +1166,9 @@
             <a href="#booking" class="service-btn"><span>Book Now</span></a>
         </div>
         <div class="service-card">
-            <div class="service-icon">
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M3 12h18M3 6h18M3 18h18"/>
-                </svg>
+            <div class="service-image">
+                <img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=400&h=300&fit=crop" alt="Brow Lamination Transformation">
+                <div class="transformation-badge">Before & After</div>
             </div>
             <h3>Brow Lamination</h3>
             <div class="price">$85</div>
@@ -1232,11 +1177,9 @@
             <a href="#booking" class="service-btn"><span>Book Now</span></a>
         </div>
         <div class="service-card">
-            <div class="service-icon">
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="10"/>
-                    <path d="M12 6v6l4 2"/>
-                </svg>
+            <div class="service-image">
+                <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=400&h=300&fit=crop" alt="Brow Tinting Transformation">
+                <div class="transformation-badge">Before & After</div>
             </div>
             <h3>Brow Tinting</h3>
             <div class="price">$45</div>
@@ -1245,58 +1188,15 @@
             <a href="#booking" class="service-btn"><span>Book Now</span></a>
         </div>
         <div class="service-card">
-            <div class="service-icon">
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/>
-                </svg>
+            <div class="service-image">
+                <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=300&fit=crop" alt="Microblading Transformation">
+                <div class="transformation-badge">Before & After</div>
             </div>
             <h3>Microblading</h3>
             <div class="price">$350</div>
             <div class="duration">150 minutes</div>
             <p>Semi-permanent eyebrow enhancement using hair-like strokes for natural, long-lasting results.</p>
             <a href="#booking" class="service-btn"><span>Book Now</span></a>
-        </div>
-    </div>
-</section>
-
-<!-- Gallery Section -->
-<section class="gallery" id="gallery">
-    <div class="section-header">
-        <h2>Before & After Transformations</h2>
-        <p>Witness the artistry and precision in our work</p>
-    </div>
-    <div class="gallery-grid">
-        <div class="gallery-item">
-            <img src="https://images.unsplash.com/photo-1590548783703-14a5918802cd?w=400&h=300&fit=crop" alt="Classic Lashes">
-            <div class="before-after">Classic Set</div>
-        </div>
-        <div class="gallery-item">
-            <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=400&h=300&fit=crop" alt="Volume Lashes">
-            <div class="before-after">Volume Set</div>
-        </div>
-        <div class="gallery-item">
-            <img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=400&h=300&fit=crop" alt="Brow Lamination">
-            <div class="before-after">Brow Lamination</div>
-        </div>
-        <div class="gallery-item">
-            <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=300&fit=crop" alt="Microblading">
-            <div class="before-after">Microblading</div>
-        </div>
-        <div class="gallery-item">
-            <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?w=400&h=300&fit=crop" alt="Hybrid Lashes">
-            <div class="before-after">Hybrid Lashes</div>
-        </div>
-        <div class="gallery-item">
-            <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=400&h=300&fit=crop" alt="Brow Tinting">
-            <div class="before-after">Brow Tinting</div>
-        </div>
-        <div class="gallery-item">
-            <img src="https://images.unsplash.com/photo-1639629509821-c54cdd984227?w=400&h=300&fit=crop" alt="Lash Lift">
-            <div class="before-after">Lash Lift</div>
-        </div>
-        <div class="gallery-item">
-            <img src="https://images.unsplash.com/photo-1552693673-1bf958298935?w=400&h=300&fit=crop" alt="Full Glam">
-            <div class="before-after">Full Glam</div>
         </div>
     </div>
 </section>
